@@ -108,10 +108,10 @@ void display_trip(list<Goat> trp) {
     int i = 1;
     for (auto gt: trp)
         cout << "\t" 
-             << "[" << i++ << "] "
-             << gt.get_name() 
-             << " (" << gt.get_age() 
-             << ", " << gt.get_color() << ")\n";
+            << "[" << i++ << "] "
+            << gt.get_name() 
+            << " (" << gt.get_age() 
+            << ", " << gt.get_color() << ")\n";
 }
 
 int select_goat(list<Goat> trp) {
