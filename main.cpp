@@ -59,6 +59,10 @@ int main() {
                 cout << "Displaying goat data.\n";
                 display_trip(trip);
                 break;
+
+            case 4:
+            cout << "Sort trip by name.\n";
+                sort_trip(trip);
             default:
                 cout << "Invalid selection.\n";
                 break;
