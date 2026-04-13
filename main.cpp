@@ -198,8 +198,11 @@ void count_goats(list<Goat> trip, int age) {
 
 void shuffle_trip(list<Goat> &trip) {
     vector<Goat> temp(trip.begin(), trip.end());
-    random_shuffle(temp.begin(), temp.end());
-    trip.assign(temp.begin(), temp.end());
+
+    random_device rd;
+    mt19937 g(rd());
+
+    shuffle(temp.begin(), temp.end(), g);
 }
 
 void display_trip(list<Goat> trp) {
