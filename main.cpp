@@ -2,15 +2,17 @@
 #include <fstream>
 #include <iomanip>
 #include <list>
+#include <algorithm>
 #include "Goat.h"
 using namespace std;
 
-const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 5;
+const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 6;
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void sort_trip(list<Goat> &trip);
+void reverse_trip(list<Goat> &trip);
 void display_trip(list<Goat> trip);
 int main_menu();
 
@@ -66,6 +68,11 @@ int main() {
                 break;
 
             case 5:
+                cout << "Reversing goat order.\n";
+                reverse_trip(trip);
+                break;
+
+            case 6:
                 cout << "Quitting.\n";
                 again = false;
                 break;
@@ -84,7 +91,8 @@ int main_menu() {
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
     cout << "[4] Sort goats by name\n";
-    cout << "[5] Quit\n";
+    cout << "[5] Reverse goat order\n";
+    cout << "[6] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -114,8 +122,14 @@ void add_goat(list<Goat> &trip, string nms[], string cls[]) {
     cout << "Goat added. New trip size: " << trip.size() << endl;
 }
 
+// @brief sort the list by name
 void sort_trip(list<Goat> &trip) {
     trip.sort();
+}
+
+// @brief reverse the list
+void reverse_trip(list<Goat>& trip){
+    reverse(trip.begin(), trip.end());
 }
 
 void display_trip(list<Goat> trp) {
