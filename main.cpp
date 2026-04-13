@@ -6,7 +6,7 @@
 #include "Goat.h"
 using namespace std;
 
-const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 7;
+const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 8;
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
@@ -16,7 +16,7 @@ void reverse_trip(list<Goat> &trip);
 void clear_trip(list<Goat> &trip);
 void display_trip(list<Goat> trip);
 void find_goat(list<Goat> trip);
-void count_goats(list<Goat> trip);
+void count_goats(list<Goat> trip, int age);
 int main_menu();
 
 int main() {
@@ -85,6 +85,14 @@ int main() {
                 find_goat(trip);
                 break;
 
+            case 8:
+                cout << "Counting goats older than n age.\n";
+                int age;
+                cout << "Enter age n: ";
+                cin >> age;
+                count_goats(trip, age);
+                break;
+
             case MAX_OPTIONS + 1:
                 cout << "Quitting.\n";
                 again = false;
@@ -107,7 +115,8 @@ int main_menu() {
     cout << "[5] Reverse goat order\n";
     cout << "[6] Clear goat data\n";
     cout << "[7] Find a goat\n";
-    cout << "[8] Quit\n";
+    cout << "[8] Goats older than n age\n";
+    cout << "[9] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -171,6 +180,7 @@ void find_goat(list<Goat> trip) {
     }
 }
 
+// @brief count goats older than a certain age and display the count
 void count_goats(list<Goat> trip, int age) {
     int count = count_if(trip.begin(), trip.end(), [age](const Goat& g){
         return g.get_age() > age;
