@@ -13,6 +13,7 @@ void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
 void sort_trip(list<Goat> &trip);
 void reverse_trip(list<Goat> &trip);
+void clear_trip(list<Goat> &trip);
 void display_trip(list<Goat> trip);
 int main_menu();
 
@@ -73,6 +74,11 @@ int main() {
                 break;
 
             case 6:
+                cout << "Clear goat data.\n";
+                clear_trip(trip);
+                break;
+
+            case 7:
                 cout << "Quitting.\n";
                 again = false;
                 break;
@@ -92,7 +98,8 @@ int main_menu() {
     cout << "[3] List goats\n";
     cout << "[4] Sort goats by name\n";
     cout << "[5] Reverse goat order\n";
-    cout << "[6] Quit\n";
+    cout << "[6] Clear goat data\n";
+    cout << "[7] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -130,6 +137,11 @@ void sort_trip(list<Goat> &trip) {
 // @brief reverse the list
 void reverse_trip(list<Goat>& trip){
     reverse(trip.begin(), trip.end());
+}
+
+// @brief clear the list of all goats
+void clear_trip(list<Goat> &trip) {
+    trip.clear();
 }
 
 void display_trip(list<Goat> trp) {
