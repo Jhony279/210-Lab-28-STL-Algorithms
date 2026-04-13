@@ -116,6 +116,7 @@ int main_menu() {
     cout << "[6] Clear goat data\n";
     cout << "[7] Find a goat\n";
     cout << "[8] Goats older than n age\n";
+    cout << "[9] Shuffle list\n";
     cout << "[9] Quit\n";
     cout << "Choice --> ";
     int choice;
