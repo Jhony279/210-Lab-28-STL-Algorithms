@@ -10,7 +10,7 @@
 #include <random>
 using namespace std;
 
-const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 10;
+const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 11;
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
@@ -23,6 +23,7 @@ void find_goat(list<Goat> trip);
 void count_goats(list<Goat> trip, int age);
 void shuffle_trip(list<Goat> &trip);
 void delete_duplicates(list<Goat> &trip);
+void 
 int main_menu();
 
 int main() {
@@ -109,6 +110,9 @@ int main() {
                 delete_duplicates(trip);
                 break;
 
+            case 11:
+                break;
+
             case MAX_OPTIONS + 1:
                 cout << "\nQuitting.\n";
                 again = false;
@@ -134,7 +138,8 @@ int main_menu() {
     cout << "[8] Goats older than n age\n";
     cout << "[9] Shuffle list\n";
     cout << "[10] Delete duplicates\n";
-    cout << "[11] Quit\n";
+    cout << "[11] Age all Goats by 1\n";
+    cout << "[12] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
