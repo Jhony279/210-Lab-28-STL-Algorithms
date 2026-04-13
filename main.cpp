@@ -149,9 +149,18 @@ void find_goat(list<Goat> trip) {
     string name;
     cout << "Enter goat name to find: ";
     cin >> name;
+
+    // use find_if and a lambda to search for the goat by name
     auto it = find_if(trip.begin(), trip.end(), [name](const Goat& g) {
         return g.get_name() == name;
     });
+    if (it != trip.end()) { // found
+        cout << "Goat found: " << it->get_name() 
+            << " (" << it->get_age() 
+            << ", " << it->get_color() << ")\n";
+    } else { // Outside of the trip (no goat found)
+        cout << "Goat not found.\n";
+    }
 }
 
 void display_trip(list<Goat> trp) {
