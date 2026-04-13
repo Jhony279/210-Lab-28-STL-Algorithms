@@ -4,6 +4,7 @@
 #include <list>
 #include <algorithm>
 #include "Goat.h"
+#include <vector>
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 8;
@@ -17,6 +18,7 @@ void clear_trip(list<Goat> &trip);
 void display_trip(list<Goat> trip);
 void find_goat(list<Goat> trip);
 void count_goats(list<Goat> trip, int age);
+void shuffle_trip(list<Goat> &trip);
 int main_menu();
 
 int main() {
@@ -187,6 +189,12 @@ void count_goats(list<Goat> trip, int age) {
         return g.get_age() > age;
     });
     cout << "Number of goats older than " << age << ": " << count << endl;
+}
+
+void shuffle_trip(list<Goat> &trip) {
+    vector<Goat> temp(trip.begin(), trip.end());
+    random_shuffle(temp.begin(), temp.end());
+    trip.assign(temp.begin(), temp.end());
 }
 
 void display_trip(list<Goat> trp) {
