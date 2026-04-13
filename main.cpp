@@ -16,6 +16,7 @@ void reverse_trip(list<Goat> &trip);
 void clear_trip(list<Goat> &trip);
 void display_trip(list<Goat> trip);
 void find_goat(list<Goat> trip);
+void count_goats(list<Goat> trip);
 int main_menu();
 
 int main() {
@@ -168,6 +169,13 @@ void find_goat(list<Goat> trip) {
     } else { // Outside of the trip (no goat found)
         cout << "Goat not found.\n";
     }
+}
+
+void count_goats(list<Goat> trip, int age) {
+    int count = count_if(trip.begin(), trip.end(), [age](const Goat& g){
+        return g.get_age() > age;
+    });
+    cout << "Number of goats older than " << age << ": " << count << endl;
 }
 
 void display_trip(list<Goat> trp) {
