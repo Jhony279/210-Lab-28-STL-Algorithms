@@ -6,7 +6,7 @@
 #include "Goat.h"
 using namespace std;
 
-const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 6;
+const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 7;
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
@@ -80,6 +80,11 @@ int main() {
                 break;
 
             case 7:
+                cout << "Finding a goat.\n";
+                find_goat(trip);
+                break;
+
+            case MAX_OPTIONS + 1:
                 cout << "Quitting.\n";
                 again = false;
                 break;
@@ -100,7 +105,8 @@ int main_menu() {
     cout << "[4] Sort goats by name\n";
     cout << "[5] Reverse goat order\n";
     cout << "[6] Clear goat data\n";
-    cout << "[7] Quit\n";
+    cout << "[7] Find a goat\n";
+    cout << "[8] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
@@ -145,6 +151,7 @@ void clear_trip(list<Goat> &trip) {
     trip.clear();
 }
 
+// @brief find a goat by name and display its data if found
 void find_goat(list<Goat> trip) {
     string name;
     cout << "Enter goat name to find: ";
