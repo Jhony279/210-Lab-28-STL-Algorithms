@@ -15,6 +15,7 @@ void sort_trip(list<Goat> &trip);
 void reverse_trip(list<Goat> &trip);
 void clear_trip(list<Goat> &trip);
 void display_trip(list<Goat> trip);
+void find_goat(list<Goat> trip);
 int main_menu();
 
 int main() {
@@ -142,6 +143,15 @@ void reverse_trip(list<Goat>& trip){
 // @brief clear the list of all goats
 void clear_trip(list<Goat> &trip) {
     trip.clear();
+}
+
+void find_goat(list<Goat> trip) {
+    string name;
+    cout << "Enter goat name to find: ";
+    cin >> name;
+    auto it = find_if(trip.begin(), trip.end(), [name](const Goat& g) {
+        return g.get_name() == name;
+    });
 }
 
 void display_trip(list<Goat> trp) {
