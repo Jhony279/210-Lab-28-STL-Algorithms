@@ -5,7 +5,7 @@
 #include "Goat.h"
 using namespace std;
 
-const int SZ_NAMES = 200, SZ_COLORS = 25;
+const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 5;
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
@@ -16,7 +16,7 @@ int main_menu();
 
 int main() {
     srand(time(0));
-    bool again;
+    bool again = true;
 
     // read & populate arrays for names and colors
     ifstream fin("names.txt");
@@ -44,8 +44,8 @@ int main() {
     }
     
     // Goat Manager 3001 Engine
-    int sel = main_menu();
-    while (sel != 4) {
+    while (again) {
+        int sel = main_menu();
         switch (sel) {
             case 1:
                 cout << "Adding a goat.\n";
@@ -61,16 +61,20 @@ int main() {
                 break;
 
             case 4:
-            cout << "Sort trip by name.\n";
+                cout << "Sorting goat by name.\n";
                 sort_trip(trip);
+                break;
+
+            case 5:
+                cout << "Quitting.\n";
+                again = false;
+                break;
+
             default:
                 cout << "Invalid selection.\n";
                 break;
         }
-        sel = main_menu();
     }
-    
-
     return 0;
 }
 
@@ -79,11 +83,12 @@ int main_menu() {
     cout << "[1] Add a goat\n";
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
-    cout << "[4] Quit\n";
+    cout << "[4] Sort goats by name\n";
+    cout << "[5] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
-    while (choice < 1 || choice > 4) {
+    while (choice < 1 || choice > MAX_OPTIONS) {
         cout << "Invalid, again --> ";
         cin >> choice;
     }
