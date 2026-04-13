@@ -220,12 +220,13 @@ void shuffle_trip(list<Goat> &trip) {
     copy(tempVector.begin(), tempVector.end(), trip.begin());
 }
 
-// @brief delete duplicate goats based on name
+// @brief delete duplicate goats based on any 3 Goat attributes
 void delete_duplicates(list<Goat> &trip) {
     // sort the list first to bring duplicates together
     trip.sort();
-    // // use unique to remove consecutive duplicates and erase the "removed" elements
-    // trip.erase(unique(trip.begin(), trip.end()), trip.end());
+
+    // use unique to remove consecutive duplicates and erase the "removed" elements
+    trip.unique();
 }
 
 void display_trip(list<Goat> trp) {
