@@ -1,3 +1,5 @@
+// COMSC-210 | Lab 27 | Johnathan Perez Baltazar
+
 #include <iostream>
 #include <fstream>
 #include <iomanip>
@@ -5,6 +7,7 @@
 #include <algorithm>
 #include "Goat.h"
 #include <vector>
+#include <random>
 using namespace std;
 
 const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 9;
@@ -55,40 +58,40 @@ int main() {
         int sel = main_menu();
         switch (sel) {
             case 1:
-                cout << "Adding a goat.\n";
+                cout << "\nAdding a goat.\n";
                 add_goat(trip, names, colors);
                 break;
             case 2:    
-                cout << "Removing a goat.\n";
+                cout << "\nRemoving a goat.\n";
                 delete_goat(trip);
                 break;
             case 3:    
-                cout << "Displaying goat data.\n";
+                cout << "\nDisplaying goat data.\n";
                 display_trip(trip);
                 break;
 
             case 4:
-                cout << "Sorting goat by name.\n";
+                cout << "\nSorting goat by name.\n";
                 sort_trip(trip);
                 break;
 
             case 5:
-                cout << "Reversing goat order.\n";
+                cout << "\nReversing goat order.\n";
                 reverse_trip(trip);
                 break;
 
             case 6:
-                cout << "Clear goat data.\n";
+                cout << "\nClear goat data.\n";
                 clear_trip(trip);
                 break;
 
             case 7:
-                cout << "Finding a goat.\n";
+                cout << "\nFinding a goat.\n";
                 find_goat(trip);
                 break;
 
             case 8:
-                cout << "Counting goats older than n age.\n";
+                cout << "\nCounting goats older than n age.\n";
                 int age;
                 cout << "Enter age n: ";
                 cin >> age;
@@ -96,17 +99,17 @@ int main() {
                 break;
 
             case 9:
-                cout << "Shuffling goat order.\n";
+                cout << "\nShuffling goat order.\n";
                 shuffle_trip(trip);
                 break;
 
             case MAX_OPTIONS + 1:
-                cout << "Quitting.\n";
+                cout << "\nQuitting.\n";
                 again = false;
                 break;
 
             default:
-                cout << "Invalid selection.\n";
+                cout << "\nInvalid selection.\n";
                 break;
         }
     }
@@ -114,7 +117,7 @@ int main() {
 }
 
 int main_menu() {
-    cout << "*** GOAT MANAGER 3001 ***\n";
+    cout << "\n*** GOAT MANAGER 3001 ***\n";
     cout << "[1] Add a goat\n";
     cout << "[2] Delete a goat\n";
     cout << "[3] List goats\n";
@@ -196,13 +199,18 @@ void count_goats(list<Goat> trip, int age) {
     cout << "Number of goats older than " << age << ": " << count << endl;
 }
 
+// @brief shuffle the order of the goats in the list
 void shuffle_trip(list<Goat> &trip) {
-    vector<Goat> temp(trip.begin(), trip.end());
+    // copy the goats from the list to a vector for shuffling
+    vector<Goat> tempVector(trip.begin(), trip.end());
 
+    // create a random number generator
     random_device rd;
     mt19937 g(rd());
 
-    shuffle(temp.begin(), temp.end(), g);
+    // use the shuffle algorithm to randomize the order of the goats in the vector
+    shuffle(tempVector.begin(), tempVector.end(), g);
+    copy(tempVector.begin(), tempVector.end(), trip.begin());
 }
 
 void display_trip(list<Goat> trp) {
