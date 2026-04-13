@@ -23,7 +23,7 @@ void find_goat(list<Goat> trip);
 void count_goats(list<Goat> trip, int age);
 void shuffle_trip(list<Goat> &trip);
 void delete_duplicates(list<Goat> &trip);
-void 
+void age_all_goats(list<Goat> &trip);
 int main_menu();
 
 int main() {
@@ -111,6 +111,8 @@ int main() {
                 break;
 
             case 11:
+            cout << "\nAging all goats by 1.\n";
+                age_all_goats(trip);
                 break;
 
             case MAX_OPTIONS + 1:
@@ -232,6 +234,13 @@ void delete_duplicates(list<Goat> &trip) {
 
     // use unique to remove consecutive duplicates and erase the "removed" elements
     trip.unique();
+}
+
+// @brief age all goats in the list by 1
+void age_all_goats(list<Goat> &trip) {
+    for (auto& goat : trip) {
+        goat.set_age(goat.get_age() + 1);
+    }
 }
 
 void display_trip(list<Goat> trp) {
