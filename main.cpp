@@ -7,7 +7,7 @@
 #include <vector>
 using namespace std;
 
-const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 8;
+const int SZ_NAMES = 200, SZ_COLORS = 25, MAX_OPTIONS = 9;
 
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
@@ -95,6 +95,11 @@ int main() {
                 count_goats(trip, age);
                 break;
 
+            case 9:
+                cout << "Shuffling goat order.\n";
+                shuffle_trip(trip);
+                break;
+
             case MAX_OPTIONS + 1:
                 cout << "Quitting.\n";
                 again = false;
@@ -119,7 +124,7 @@ int main_menu() {
     cout << "[7] Find a goat\n";
     cout << "[8] Goats older than n age\n";
     cout << "[9] Shuffle list\n";
-    cout << "[9] Quit\n";
+    cout << "[10] Quit\n";
     cout << "Choice --> ";
     int choice;
     cin >> choice;
