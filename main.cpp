@@ -10,6 +10,7 @@ const int SZ_NAMES = 200, SZ_COLORS = 25;
 int select_goat(list<Goat> trip);
 void delete_goat(list<Goat> &trip);
 void add_goat(list<Goat> &trip, string [], string []);
+void sort_trip(list<Goat> &trip);
 void display_trip(list<Goat> trip);
 int main_menu();
 
@@ -102,6 +103,10 @@ void add_goat(list<Goat> &trip, string nms[], string cls[]) {
     Goat tmp(nm, age, cl);
     trip.push_back(tmp);
     cout << "Goat added. New trip size: " << trip.size() << endl;
+}
+
+void sort_trip(list<Goat> &trip) {
+    trip.sort();
 }
 
 void display_trip(list<Goat> trp) {
